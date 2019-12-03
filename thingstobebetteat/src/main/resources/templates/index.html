@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <header class="bg-light text-dark text-center page-header p-3 sticky-top">
+        <h3 style="margin: 0">Things I want to be better at</h3>
+    </header>
+</head>
+<section class="py-5">
+    <div class="container">
+
+        <table th:if="${things}" class="table table-hover">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Explanation</th>
+                <th scope="col" colspan="2"><a class="btn btn-success" href="/add">Add</a></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="thing: ${things}">
+                <td scope="row" th:text="${thing.description}"></td>
+                <td scope="row" th:text="${thing.explanation}"></td>
+                <td>
+                    <a  class="btn btn-light" th:href="'/delete/' + ${thing.id}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- END main section -->
+
+<!-- START footer section -->
+<footer class="py-4 bg-light text-dark flex-shrink-0">
+    <div class="container text-center">Belongs to nobody. Just write what you want. And delete what is not important.</div>
+</footer>
+<!-- END footer section -->
+</body>
+
+</html>
